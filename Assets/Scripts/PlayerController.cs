@@ -13,15 +13,29 @@ public class Boundary
 public class PlayerController : MonoBehaviour
 {
     public Boundary boundary;
-
     private Rigidbody rigidBody;
 
+    public GameObject shot;
+    public Transform shotSpawn;
+    public float fireRate;
+    private float nextFire;
+
+    public float speed;
+    public float tilt;
     private void Start()
     {
         rigidBody = gameObject.GetComponent<Rigidbody>();
     }
-    public float speed;
-    public float tilt;
+
+    private void Update()
+    {
+        if(Input.GetButton("Fire1") && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+        }
+        
+    }
     private void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -39,4 +53,6 @@ public class PlayerController : MonoBehaviour
 
         rigidBody.rotation = Quaternion.Euler(0.0f, 0.0f, rigidBody.velocity.x * -tilt);
     }
+
+
 }
