@@ -7,6 +7,7 @@ public class Mover : MonoBehaviour {
     private Rigidbody rigidBody;
 
     public float speed;
+
     private void Start()
     {
         rigidBody = gameObject.GetComponent<Rigidbody>();

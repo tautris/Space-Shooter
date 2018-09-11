@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     public float tilt;
+
     private void Start()
     {
         rigidBody = gameObject.GetComponent<Rigidbody>();
